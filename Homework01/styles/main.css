@@ -1,0 +1,51 @@
+body {
+    background: lightgray;
+}
+
+.button-group {
+    text-align: center;
+}
+.button-group > button {
+    font-size: 1.5em;
+    margin: 2px;
+}
+
+.page-container {
+    margin-top: 5px;
+}
+
+#favoriteNumber {
+    color: black;
+    font-family: consolas, arial, sans-serif;
+    font-size: 4em;
+    text-align: center;
+}
+
+#colorContainer {
+    text-align: center;
+}
+
+
+#favoriteColorBox {
+    background-color: #800000;
+    line-height: 100px;
+    text-align: center;
+    color: white;
+    width: 200px;
+}
+
+#grayButton {
+    background-color: #808080;
+}
+
+#redButton {
+    background-color: #800000;
+}
+
+#greenButton {
+    background-color: #008000;
+}
+
+#blueButton {
+    background-color: #000080;
+}
