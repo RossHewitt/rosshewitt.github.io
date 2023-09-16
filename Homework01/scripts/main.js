@@ -1,4 +1,5 @@
 const RGB_CHANGE_INDEX = 0x10;
+const FONT_TRANSITION_COLOR = 255.0*3.0/2.0;
 
 let counter = 0;
 let color = 0x000000;
@@ -83,6 +84,11 @@ arithmetic_change_color = function(colorToChange, change, RGB) {
     return color - (value << shift) + (newValue << shift);
 }
 
+//Returns the value of the color, scaled from 0 (black) to 765 (white)
+integer_color_value = function(int_color) {
+    return (int_color & 0x0000FF) + ((int_color & 0x00FF00) >> 8) + ((int_color & 0xFF0000) >> 16);
+}
+
 updateView = function() {
     document.querySelector("#favoriteNumber").innerHTML = `${counter}`;
     let colorBox = document.querySelector("#favoriteColorBox");
@@ -95,6 +101,21 @@ updateView = function() {
     document.querySelector("#lessGreenButton").style.backgroundColor = integer_to_color_string(arithmetic_change_color(color, -RGB_CHANGE_INDEX, 'G'));
     document.querySelector("#moreRedButton").style.backgroundColor = integer_to_color_string(arithmetic_change_color(color, RGB_CHANGE_INDEX, 'R'));
     document.querySelector("#lessRedButton").style.backgroundColor = integer_to_color_string(arithmetic_change_color(color, -RGB_CHANGE_INDEX, 'R'));
+
+    let item = document.querySelector("#moreBlueButton");
+    item.style.color = integer_color_value(color) > FONT_TRANSITION_COLOR ? "black" : "white";
+    item = document.querySelector("#lessBlueButton");
+    item.style.color = integer_color_value(color) > FONT_TRANSITION_COLOR ? "black" : "white";
+    item = document.querySelector("#moreRedButton");
+    item.style.color = integer_color_value(color) > FONT_TRANSITION_COLOR ? "black" : "white";
+    item = document.querySelector("#lessRedButton");
+    item.style.color = integer_color_value(color) > FONT_TRANSITION_COLOR ? "black" : "white";
+    item = document.querySelector("#moreGreenButton");
+    item.style.color = integer_color_value(color) > FONT_TRANSITION_COLOR ? "black" : "white";
+    item = document.querySelector("#lessGreenButton");
+    item.style.color = integer_color_value(color) > FONT_TRANSITION_COLOR ? "black" : "white";
+    item = document.querySelector("#favoriteColorBox");
+    item.style.color = integer_color_value(color) > FONT_TRANSITION_COLOR ? "black" : "white";
 }
 
 main = function() {
